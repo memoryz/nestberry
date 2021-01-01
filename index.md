@@ -17,7 +17,7 @@ Meanwhile, Google Nest provides APIs (Device Access Console) for camera or doorb
 
 Additionally you will need a micro SD card reader if you don't already have one.
 
-Amazon links are posted below.
+Amazon links are posted [below](#resources).
 
 ## Software Requirements
 
