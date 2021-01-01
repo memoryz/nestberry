@@ -2,7 +2,7 @@
 
 ## Why?
 
-Google Nest does not record motion-triggered video unless you subscribe to Nest Aware service. The cost is $60/year for 30 days event video history, and $120/year for 60 days history.
+Google Nest does not record motion-triggered video unless you subscribe to Nest Aware service. The [service cost](https://store.google.com/us/product/nest_aware) is $60/year for 30 days event video history, and $120/year for 60 days history.
 
 Meanwhile, Google Nest provides APIs (Device Access Console) for camera or doorbell events, and we can setup our own video recording service on a Raspberry Pi, with a USB thumb drive as the external storage for recordings.
 
