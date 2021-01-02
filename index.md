@@ -90,21 +90,29 @@ If you are using Raspberry Pi Manager, you can load the `hassos` image by clicki
 
 3. External Storage
 
-    We want to store the video recording on an external USB thumb drive. Mounting a USB drive to Home Assistant can be quite tricky, and there are a few ways to do it. The easiest way I found is [this](https://community.home-assistant.io/t/solved-mount-usb-drive-in-hassio-to-be-used-on-the-media-folder-with-udev-customization/258406). To summarize:
+    We want to store the video recording on an external USB thumb drive. Mounting a USB drive to Home Assistant can be quite tricky, and there are a few ways to do it. The easiest way I found is [this](https://community.home-assistant.io/t/solved-mount-usb-drive-in-hassio-to-be-used-on-the-media-folder-with-udev-customization/258406).
+
+    To summarize:
 
     1. Prepare the USB drive for configuration.
-    From your desktop, format the USB drive with FAT32, and label it as `CONFIG` (case sensitive). Then create a folder called `udev`, and create a file called `80-mount-usb-to-media-by-label.rules` inside it. Copy the content from [this gist](https://gist.github.com/eklex/c5fac345de5be9d9bc420510617c86b5) to the file.
+
+        From your desktop, format the USB drive with FAT32, and label it as `CONFIG` (case sensitive). Then create a folder called `udev`, and create a file called `80-mount-usb-to-media-by-label.rules` inside it. Copy the content from [this gist](https://gist.github.com/eklex/c5fac345de5be9d9bc420510617c86b5) to the file.
 
     2. Load the USB drive.
-    Insert the USB drive into the Raspberry Pi, then go to HA Web UI, and go to `Supervisor`, `System`, and `Import from USB`.
+
+        Insert the USB drive into the Raspberry Pi, then go to HA Web UI, and go to `Supervisor`, `System`, and `Import from USB`.
 
     3. Prepare the USB drive for media.
-    Move the USB drive to your desktop, wipe out the content, and rename the drive to anything but `CONFIG` (e.g. `RECORDING`). The `udev` rule will ignore any USB drive labeled as `CONFIG`.
 
-    4. Plug in the USB drive to Raspberry Pi, and reboot HA from the HA Web UI (`Configuration`, `Server Controls`, `Server management`, `RESTART`).
+        Move the USB drive to your desktop, wipe out the content, and rename the drive to anything but `CONFIG` (e.g. `RECORDING`). The `udev` rule will ignore any USB drive labeled as `CONFIG`.
+
+    4. Mount the external drive.
+
+        Plug in the USB drive to Raspberry Pi, and reboot HA from the HA Web UI (`Configuration`, `Server Controls`, `Server management`, `RESTART`).
 
     5. Verify the drive is mounted.
-    Go to HA Web UI, open SSH, and make sure the USB drive is mounted under the `/media` directory.
+  
+        Go to HA Web UI, open SSH, and make sure the USB drive is mounted under the `/media` directory.
 
         ```bash
         ~$ ls /media/
@@ -112,7 +120,8 @@ If you are using Raspberry Pi Manager, you can load the `hassos` image by clicki
         ```
 
     6. Add the mounted folder to HA allowed list.
-    Modify `/config/configuration.yml` file and add the following section:
+
+        Modify `/config/configuration.yml` file and add the following section:
 
         ```yml
         homeassistant:
@@ -129,6 +138,7 @@ If you are using Raspberry Pi Manager, you can load the `hassos` image by clicki
     ![Preload stream](img/preload_stream.png)
 
 5. Automation
+
     Go to the `Configuration`, `Automations` page, and start adding automation. You can either `edit with UI` or `edit as YAML`. Here is an example:
 
     ```yml
